@@ -7,14 +7,14 @@
 #include "Bureaucrat.hpp"
 
 
-class Form
+class AForm
 {
 	public:
-		Form(void);
-		Form(const std::string& name, const int gradeToSign, const int gradeToExecute);
-		Form(const Form& copy);
-		Form& operator=(const Form& other);
-		~Form(void);
+		AForm(void);
+		AForm(const std::string& name, const int gradeToSign, const int gradeToExecute);
+		AForm(const AForm& copy);
+		AForm& operator=(const AForm& other);
+		~AForm(void);
 
 		const std::string getName(void) const;
 		bool getIsSigned(void) const;
@@ -43,6 +43,6 @@ class Form
 		const int gradeToExecute;
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const AForm& form);
 
 #endif
