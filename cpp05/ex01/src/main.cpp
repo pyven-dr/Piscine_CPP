@@ -5,12 +5,12 @@ int main(void)
 {
 	Bureaucrat bureaucrat("Fred", 20);
 
-	AForm form("Form1", 10, 20);
-	AForm form2("Form2", 21, 20);
+	Form form("Form1", 10, 20);
+	Form form2("Form2", 21, 20);
 
 	try
 	{
-		AForm invalid_form("invalid_form", 200, 200);
+		Form invalid_form("invalid_form", 200, 200);
 	}
 	catch (std::exception & e)
 	{

@@ -7,14 +7,14 @@
 #include "Bureaucrat.hpp"
 
 
-class AForm
+class Form
 {
 	public:
-		AForm(void);
-		AForm(const std::string& name, const int gradeToSign, const int gradeToExecute);
-		AForm(const AForm& copy);
-		AForm& operator=(const AForm& other);
-		~AForm(void);
+		Form(void);
+		Form(const std::string& name, const int gradeToSign, const int gradeToExecute);
+		Form(const Form& copy);
+		Form& operator=(const Form& other);
+		~Form(void);
 
 		const std::string getName(void) const;
 		bool getIsSigned(void) const;
@@ -23,6 +23,12 @@ class AForm
 
 		void beSigned(const Bureaucrat& bureaucrat);
 
+	private:
+		const std::string name;
+		bool isSigned;
+		const int gradeToSign;
+		const int gradeToExecute;
+		
 		class GradeTooHighException: public std::exception
 		{
 				virtual const char* what(void) const throw();
@@ -35,14 +41,8 @@ class AForm
 		{
 				virtual const char* what(void) const throw();
 		};
-
-	private:
-		const std::string name;
-		bool isSigned;
-		const int gradeToSign;
-		const int gradeToExecute;
 };
 
-std::ostream& operator<<(std::ostream& os, const AForm& form);
+std::ostream& operator<<(std::ostream& os, const Form& form);
 
 #endif

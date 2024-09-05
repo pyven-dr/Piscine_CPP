@@ -8,7 +8,7 @@
 #define MAX_GRADE 1
 #define MIN_GRADE 150
 
-class AForm;
+class Form;
 
 class Bureaucrat
 {
@@ -26,7 +26,7 @@ class Bureaucrat
 
 		void incrementGrade(void);
 		void decrementGrade(void);
-		void signForm(AForm& form) const;
+		void signForm(Form& form) const;
 
 
 	private:
