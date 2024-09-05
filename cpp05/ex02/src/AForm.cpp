@@ -83,8 +83,8 @@ void AForm::check_execute(const Bureaucrat &bureaucrat) const
 std::ostream& operator<<(std::ostream& os, const AForm& AForm)
 {
 	if (AForm.getIsSigned() == false)
-		os << AForm.getName() << ", AForm not signed, Grade to sign : " << AForm.getGradeToSign() << " , Grade to execute : " << AForm.getGradeToExecute() << std::endl;
+		os << AForm.getName() << ", Form not signed, Grade to sign : " << AForm.getGradeToSign() << " , Grade to execute : " << AForm.getGradeToExecute() << std::endl;
 	else
-		os << AForm.getName() << ", AForm signed, Grade to sign : " << AForm.getGradeToSign() << " , Grade to execute : " << AForm.getGradeToExecute() << std::endl;
+		os << AForm.getName() << ", Form signed, Grade to sign : " << AForm.getGradeToSign() << " , Grade to execute : " << AForm.getGradeToExecute() << std::endl;
 	return (os);
 }
