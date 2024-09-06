@@ -8,7 +8,10 @@
 
 ScalarConverter::ScalarConverter(void) {}
 
-ScalarConverter::ScalarConverter(const ScalarConverter &copy) {static_cast <void>(copy);}
+ScalarConverter::ScalarConverter(const ScalarConverter &copy)
+{
+	static_cast <void>(copy);
+}
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 {
@@ -22,9 +25,11 @@ ScalarConverter::~ScalarConverter(void) {}
 void printDouble(const double litteral)
 {
 	if (std::fabs(litteral - static_cast<int>(litteral)) < 1e-10)
-		std::cout << "double: " << std::fixed << std::setprecision(1) << litteral  << std::endl;
+		std::cout << "double: " << std::fixed << std::setprecision(1) \
+			<< litteral  << std::endl;
 	else
-		std::cout << "double: " << std::setprecision(10) << litteral  << std::endl;
+		std::cout << "double: " << std::setprecision(10) \
+			<< litteral  << std::endl;
 }
 
 void printInt(const double litteral)
@@ -53,9 +58,11 @@ void printFloat(const double litteral)
 	else
 	{
 		if (std::fabs(litteral - static_cast<int>(litteral)) < 1e-10)
-			std::cout << "float: " << std::fixed << std::setprecision(1) << litteral << "f" << std::endl;
+			std::cout << "float: " << std::fixed << std::setprecision(1) \
+				<< litteral << "f" << std::endl;
 		else
-			std::cout << "float: " << std::setprecision(6) << litteral << "f" << std::endl;
+			std::cout << "float: " << std::setprecision(6) \
+				<< litteral << "f" << std::endl;
 	}
 }
 

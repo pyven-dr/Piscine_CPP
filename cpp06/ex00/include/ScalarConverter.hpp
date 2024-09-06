@@ -13,7 +13,6 @@ class ScalarConverter
 		ScalarConverter(const ScalarConverter& copy);
 		ScalarConverter& operator=(const ScalarConverter& other);
 		~ScalarConverter(void);
-
 };
 
 #endif
