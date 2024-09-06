@@ -5,7 +5,6 @@
 #include <limits>
 #include "ScalarConverter.hpp"
 
-
 ScalarConverter::ScalarConverter(void) {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter &copy)
@@ -20,7 +19,6 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 }
 
 ScalarConverter::~ScalarConverter(void) {}
-
 
 void printDouble(const double litteral)
 {
