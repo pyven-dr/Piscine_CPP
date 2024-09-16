@@ -13,13 +13,15 @@ int main(void)
 
 	std::vector<int>::iterator it = easyfind(vector, 5);
 	if (it != vector.end())
-		std::cout << "found at index " << std::distance(vector.begin(), it) << std::endl;
+		std::cout << "found at index " << std::distance(vector.begin(), it)\
+			<< std::endl;
 	else
 		std::cout << "Element not found" << std::endl;
 
 	it = easyfind(vector, 6);
 	if (it != vector.end())
-		std::cout << "found at index " << std::distance(vector.begin(), it) << std::endl;
+		std::cout << "found at index " << std::distance(vector.begin(), it)\
+			<< std::endl;
 	else
 		std::cout << "Element not found" << std::endl;
 
@@ -32,13 +34,15 @@ int main(void)
 
 	std::set<int>::iterator it_set = easyfind(set, 7);
 	if (it_set != set.end())
-		std::cout << "found at index " << std::distance(set.begin(), it_set) << std::endl;
+		std::cout << "found at index " << std::distance(set.begin(), it_set)\
+			<< std::endl;
 	else
 		std::cout << "Element not found" << std::endl;
 
 	it_set = easyfind(set, 10);
 	if (it_set != set.end())
-		std::cout << "found at index " << std::distance(set.begin(), it_set) << std::endl;
+		std::cout << "found at index " << std::distance(set.begin(), it_set)\
+			<< std::endl;
 	else
 		std::cout << "Element not found" << std::endl;
 	return (0);
