@@ -2,6 +2,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "AForm.hpp"
 
 Intern::Intern() {}
 
@@ -25,23 +26,30 @@ int	find_form_type(const std::string &form_name)
 	return (-1);
 }
 
+AForm *createShrubForm(std::string target_name)
+{
+	return (new ShrubberyCreationForm(target_name));
+}
+
+AForm *createRobForm(std::string target_name)
+{
+	return (new RobotomyRequestForm(target_name));
+}
+
+AForm *createPresForm(std::string target_name)
+{
+	return (new PresidentialPardonForm(target_name));
+}
+
 AForm *Intern::makeForm(std::string form_name, std::string target_name)
 {
 	int index_form = find_form_type(form_name);
-
-	switch (index_form)
+	if (index_form == -1)
 	{
-		case 0:
-			std::cout << "Intern creates a Shrubbery creation form" << std::endl;
-			return (new ShrubberyCreationForm(target_name));
-		case 1:
-			std::cout << "Intern creates a Robotomy request form" << std::endl;
-			return (new RobotomyRequestForm(target_name));
-		case 2:
-			std::cout << "Intern creates a Presidential pardon form" << std::endl;
-			return (new PresidentialPardonForm(target_name));
-		default:
-			std::cout << "Inter can't create a form of type : " << form_name << std::endl;
-			return (NULL);
+		std::cout << "Intern can't create a form of type : " << form_name << std::endl;
+		return (NULL);
 	}
+	AForm* (*FormCreator[3])(std::string) = {createShrubForm, createRobForm,createPresForm};
+	std::cout << "Intern created " << form_name << std::endl;
+	return (FormCreator[index_form](target_name));
 }
