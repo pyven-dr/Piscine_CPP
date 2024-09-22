@@ -14,11 +14,13 @@ class BitcoinExchange
 		~BitcoinExchange(void);
 
 		void ConvertData(const std::string &inputPath);
-		void ConvertValue(const std::string &date_str, const double value);
-		void displayMap(void);
+		void ConvertValue(const std::string &date_str, double value);
 
 	private:
 		std::map<int, double> map;
 };
+
+void CheckInput(const std::string &line);
+int DateToInt(std::string date);
 
 #endif

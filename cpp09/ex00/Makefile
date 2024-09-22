@@ -9,7 +9,9 @@ INCLUDE_DIR = include
 IFLAGS = -I $(INCLUDE_DIR)
 
 SRC = main.cpp \
-	  BitcoinExchange.cpp
+	  BitcoinExchange.cpp \
+	  CheckInput.cpp \
+	  DateToInt.cpp
 
 BUILD_DIR = .build
 
