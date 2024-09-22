@@ -2,6 +2,7 @@
 # define BITCOIN_EXCHANGE_HPP
 
 #include <map>
+#include <string>
 
 #define CSV_PATH "./data.csv"
 
@@ -21,6 +22,6 @@ class BitcoinExchange
 };
 
 void CheckInput(const std::string &line);
-int DateToInt(std::string date);
+int DateToInt(const std::string &date);
 
 #endif

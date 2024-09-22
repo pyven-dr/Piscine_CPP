@@ -1,10 +1,6 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <exception>
 #include <cstdlib>
-#include <cctype>
-#include <iomanip>
+#include <fstream>
+#include <iostream>
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(void)
@@ -19,7 +15,7 @@ BitcoinExchange::BitcoinExchange(void)
 	std::getline(file_csv, line);
 	while (std::getline(file_csv, line))
 	{
-		date = line.substr(0,10);
+		date = line.substr(0, 10);
 		exchange_rate = line.substr(11);
 		this->map[DateToInt(date)] = std::strtod(exchange_rate.c_str(), NULL);
 	}
@@ -48,7 +44,8 @@ void BitcoinExchange::ConvertValue(const std::string &date_str, double value)
 	if (it == this->map.end())
 		std::cout << "Can't find any date" << std::endl;
 	else
-		std::cout << date_str << " => " << value << " = " << value * it->second << std::endl;
+		std::cout << date_str << " => " << value << " = "
+			<< value * it->second << std::endl;
 }
 
 void BitcoinExchange::ConvertData(const std::string &inputPath)
@@ -72,7 +69,7 @@ void BitcoinExchange::ConvertData(const std::string &inputPath)
 			std::cout << e.what() << std::endl;
 		}
 		if (exception == false)
-			this->ConvertValue(line.substr(0,10),
+			this->ConvertValue(line.substr(0, 10),
 						   	std::strtod(line.substr(13).c_str(), NULL));
 		exception = true;
 	}

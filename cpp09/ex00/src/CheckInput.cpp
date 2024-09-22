@@ -17,8 +17,8 @@ static void CheckDate(const std::string &date)
 		else if (std::isdigit(date[i]) == 0)
 			throw std::invalid_argument("Invalid date => " + date);
 	}
-	month = std::atoi(date.substr(5,2).c_str());
-	day = std::atoi(date.substr(8,2).c_str());
+	month = std::atoi(date.substr(5, 2).c_str());
+	day = std::atoi(date.substr(8, 2).c_str());
 	if (month == 0 || month > 12)
 		throw std::invalid_argument("Invalid date => " + date);
 	if (day == 0 || day > 31)
