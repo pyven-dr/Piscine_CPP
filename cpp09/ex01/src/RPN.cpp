@@ -50,6 +50,8 @@ int RPN::calculate(const std::string &strOperator)
 	}
 	Operator = strOperator[0];
 	result = makeOperation(Operator, this->PopAndGet(), this->PopAndGet());
+	if (result == -1)
+		return (-1);
 	this->stack.push(result);
 	return (0);
 }
@@ -77,5 +79,6 @@ void RPN::resolve(const std::string &operation)
 		std::cerr << "Incomplete expression" << std::endl;
 		return;
 	}
-	std::cout << this->PopAndGet() << std::endl;
+	if (this->stack.empty() == false)
+		std::cout << this->PopAndGet() << std::endl;
 }
