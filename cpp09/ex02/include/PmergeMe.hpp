@@ -17,6 +17,7 @@ class PmergeMe
 
 		void SortVector(void);
 		void DisplayVector(std::ostream& os) const;
+		void DisplayDeque(std::ostream& os) const;
 
 		void SortDeque(void);
 
@@ -28,12 +29,7 @@ class PmergeMe
 
 std::ostream& operator<<(std::ostream& os, const PmergeMe& SortClass);
 
-void InsertSortVector(std::vector<int> *vector, size_t middle);
-size_t FindPos(const std::vector<int> &SortedVector, int elem);
-void MergeSortVector(std::vector<int> *vector, size_t middle);
-
-void InsertSortDeque(std::deque<int> *deque, size_t middle);
-size_t FindPos(const std::deque<int> &SortedDeque, int elem);
-void MergeSortDeque(std::deque<int> *deque, size_t middle);
+void MergeInsertSortVector(std::vector<int> *vector);
+void MergeInsertSortDeque(std::deque<int> *deque);
 
 #endif

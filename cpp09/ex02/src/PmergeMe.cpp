@@ -38,54 +38,29 @@ void PmergeMe::FillClass(int argc, char **argv)
 	}
 }
 
+
 void PmergeMe::SortVector()
 {
-	size_t middle = this->size / 2;
-	int temp;
-	std::vector<int>::iterator itStart = this->vector.begin();
-	std::vector<int>::iterator itMiddle = this->vector.begin() + middle;
-
-	for (size_t i = 0; i < middle; ++i)
-	{
-		if (*itStart < *itMiddle)
-		{
-			temp = *itStart;
-			*itStart = *itMiddle;
-			*itMiddle = temp;
-		}
-		++itStart;
-		++itMiddle;
-	}
-	InsertSortVector(&this->vector, middle);
-	MergeSortVector(&this->vector, middle);
+	MergeInsertSortVector(&this->vector);
 }
 
 void PmergeMe::SortDeque()
 {
-	size_t middle = this->size / 2;
-	int temp;
-	std::deque<int>::iterator itStart = this->deque.begin();
-	std::deque<int>::iterator itMiddle = this->deque.begin() + middle;
-
-	for (size_t i = 0; i < middle; ++i)
-	{
-		if (*itStart < *itMiddle)
-		{
-			temp = *itStart;
-			*itStart = *itMiddle;
-			*itMiddle = temp;
-		}
-		++itStart;
-		++itMiddle;
-	}
-	InsertSortDeque(&this->deque, middle);
-	MergeSortDeque(&this->deque, middle);
+	MergeInsertSortDeque(&this->deque);
 }
 
 void PmergeMe::DisplayVector(std::ostream &os) const
 {
 	for (std::vector<int>::const_iterator it = this->vector.begin();
 		it != this->vector.end(); ++it)
+		os << *it << " ";
+	os << std::endl;
+}
+
+void PmergeMe::DisplayDeque(std::ostream &os) const
+{
+	for (std::deque<int>::const_iterator it = this->deque.begin();
+		 it != this->deque.end(); ++it)
 		os << *it << " ";
 	os << std::endl;
 }
