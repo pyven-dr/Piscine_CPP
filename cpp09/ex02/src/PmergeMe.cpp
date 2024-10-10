@@ -20,6 +20,15 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 
 PmergeMe::~PmergeMe() {}
 
+size_t JacobsthalNumbers(size_t n)
+{
+	if (n == 0)
+		return (0);
+	if (n == 1)
+		return (1);
+	return ((JacobsthalNumbers(n - 2) * 2) + JacobsthalNumbers(n - 1));
+}
+
 void PmergeMe::FillClass(int argc, char **argv)
 {
 	char *endptr;

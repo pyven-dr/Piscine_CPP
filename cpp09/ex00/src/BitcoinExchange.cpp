@@ -52,7 +52,6 @@ void BitcoinExchange::ConvertData(const std::string &inputPath)
 {
 	std::ifstream inputFile(inputPath.c_str());
 	std::string line;
-	bool exception = true;
 
 	if (inputFile.is_open() == 0)
 		throw std::invalid_argument("Can't open input file");
@@ -62,16 +61,13 @@ void BitcoinExchange::ConvertData(const std::string &inputPath)
 		try
 		{
 			CheckInput(line);
-			exception = false;
+			this->ConvertValue(line.substr(0, 10),
+						   	std::strtod(line.substr(13).c_str(), NULL));
 		}
 		catch (std::exception &e)
 		{
 			std::cout << e.what() << std::endl;
 		}
-		if (exception == false)
-			this->ConvertValue(line.substr(0, 10),
-						   	std::strtod(line.substr(13).c_str(), NULL));
-		exception = true;
 	}
 	inputFile.close();
 }

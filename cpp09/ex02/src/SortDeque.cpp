@@ -1,5 +1,5 @@
-#include <cstdlib>
 #include <deque>
+#include "PmergeMe.hpp"
 
 static void InsertSortDeque(std::deque<int> *deque, size_t middle)
 {
@@ -39,22 +39,32 @@ static size_t FindPos(const std::deque<int> &SortedDeque, int elem, size_t pair)
 	return (left);
 }
 
-static void MergeSortDeque(std::deque<int> *deque, size_t middle)
+static void MergeSortDeque(std::deque<int> *deque)
 {
 	std::deque<int> SortedDeque;
 	size_t i = 0;
 	size_t pos;
+	size_t middle = (*deque).size() / 2;
 
 	for ((void)i; i < middle; ++i)
 		SortedDeque.push_back((*deque)[i]);
 	SortedDeque.insert(SortedDeque.begin(), (*deque)[i]);
 	++i;
-	for ((void)i; i < (deque->size() - 1); i++)
+	for (size_t j = 0; JacobsthalNumbers(j) < deque->size(); ++j)
 	{
-		if (i + 1 != deque->size())
-			pos = FindPos(SortedDeque, (*deque)[i], i - middle);
-		else
-			pos = FindPos(SortedDeque, (*deque)[i], SortedDeque.size());
+		size_t number = JacobsthalNumbers(j);
+		middle = (*deque).size() / 2;
+
+		if (number > middle)
+		{
+			pos = FindPos(SortedDeque, (*deque)[number], SortedDeque.size());
+			SortedDeque.insert(SortedDeque.begin() + pos, (*deque)[number]);
+			deque->erase(deque->begin() + number);
+		}
+	}
+	for ((void)i; i < deque->size(); i++)
+	{
+		pos = FindPos(SortedDeque, (*deque)[i], SortedDeque.size());
 		SortedDeque.insert(SortedDeque.begin() + pos, (*deque)[i]);
 	}
 	(*deque) = SortedDeque;
@@ -81,5 +91,10 @@ void MergeInsertSortDeque(std::deque<int> *deque)
 	}
 	InsertSortDeque(deque, middle);
 	SmallerDeque.assign((*deque).begin() + middle, (*deque).end());
-	MergeSortDeque(deque, middle);
+	if (SmallerDeque.size() > 1)
+	{
+		MergeInsertSortDeque(&SmallerDeque);
+		std::copy(SmallerDeque.begin(), SmallerDeque.end(), (*deque).begin() + middle);
+	}
+	MergeSortDeque(deque);
 }

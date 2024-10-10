@@ -1,13 +1,12 @@
-#include <cstdlib>
 #include <vector>
-#include <iostream>
+#include "PmergeMe.hpp"
+
 static void InsertSortVector(std::vector<int> *vector, size_t middle)
 {
 	int elem;
 	int elemMiddle;
 	size_t j;
 
-	std::cout << (*vector)[middle - 1 + middle] << std::endl;
 	for (size_t i = 1; i < middle; ++i)
 	{
 		elem = (*vector)[i];
@@ -40,22 +39,32 @@ static size_t FindPos(const std::vector<int> &SortedVector, int elem, size_t pai
 	return (left);
 }
 
-static void MergeSortVector(std::vector<int> *vector, size_t middle)
+static void MergeSortVector(std::vector<int> *vector)
 {
 	std::vector<int> SortedVector;
 	size_t i = 0;
 	size_t pos;
+	size_t middle = (*vector).size() / 2;
 
 	for ((void)i; i < middle; ++i)
 		SortedVector.push_back((*vector)[i]);
 	SortedVector.insert(SortedVector.begin(), (*vector)[i]);
 	++i;
-	for ((void)i; i < (vector->size() - 1); i++)
+	for (size_t j = 0; JacobsthalNumbers(j) < vector->size(); ++j)
 	{
-		if (i + 1 != vector->size())
-			pos = FindPos(SortedVector, (*vector)[i], i - middle);
-		else
-			pos = FindPos(SortedVector, (*vector)[i], SortedVector.size());
+		size_t number = JacobsthalNumbers(j);
+		middle = (*vector).size() / 2;
+
+		if (number > middle)
+		{
+			pos = FindPos(SortedVector, (*vector)[number],SortedVector.size());
+			SortedVector.insert(SortedVector.begin() + pos, (*vector)[number]);
+			vector->erase(vector->begin() + number);
+		}
+	}
+	for ((void)i; i < vector->size(); i++)
+	{
+		pos = FindPos(SortedVector, (*vector)[i], SortedVector.size());
 		SortedVector.insert(SortedVector.begin() + pos, (*vector)[i]);
 	}
 	(*vector) = SortedVector;
@@ -87,5 +96,5 @@ void MergeInsertSortVector(std::vector<int> *vector)
 		MergeInsertSortVector(&Smallervector);
 		std::copy(Smallervector.begin(), Smallervector.end(), (*vector).begin() + middle);
 	}
-	MergeSortVector(vector, middle);
+	MergeSortVector(vector);
 }

@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <vector>
 #include <deque>
+#include <iostream>
 
 class PmergeMe
 {
@@ -31,5 +32,6 @@ std::ostream& operator<<(std::ostream& os, const PmergeMe& SortClass);
 
 void MergeInsertSortVector(std::vector<int> *vector);
 void MergeInsertSortDeque(std::deque<int> *deque);
+size_t JacobsthalNumbers(size_t n);
 
 #endif
