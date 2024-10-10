@@ -20,9 +20,9 @@ class Span
 		void addNumbers(Iterator begin, Iterator end)
 		{
 			unsigned int size = std::distance(begin, end);
-			if (NumList.size() + size > N)
+			if (this->NumList.size() + size > N)
 				throw Span::SpanFull();
-			NumList.insert(NumList.end(), begin, end);
+			this->NumList.insert(this->NumList.end(), begin, end);
 		}
 
 		int shortestSpan(void);

@@ -45,8 +45,6 @@ int main()
 		++rev_it;
 	}
 
-	std::stack<int> s(mstack);
-
 
 	std::list<int> list;
 	list.push_back(5);

@@ -29,6 +29,14 @@ int main(void)
 	span.addNumber(17);
 	span.addNumber(9);
 	span.addNumber(11);
+	try
+	{
+		span.addNumber(6);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 	std::cout << span.shortestSpan() << std::endl;
 	std::cout << span.longestSpan() << "\n" << std::endl;
